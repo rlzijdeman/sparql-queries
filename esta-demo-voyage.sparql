@@ -1,3 +1,5 @@
+#+ endpoint: https://druid.datalegend.net/ESTA-DEMO/esta-demo-viz/services#esta-demo-viz
+
 PREFIX schema: <http://schema.org/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
