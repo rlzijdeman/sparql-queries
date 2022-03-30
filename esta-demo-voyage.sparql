@@ -1,4 +1,4 @@
-#+ endpoint: https://druid.datalegend.net/ESTA-DEMO/esta-demo-viz/services#esta-demo-viz
+#+ endpoint: https://api.druid.datalegend.net/datasets/ESTA-DEMO/esta-demo-viz/services/esta-demo-viz/sparql
 
 PREFIX schema: <http://schema.org/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
