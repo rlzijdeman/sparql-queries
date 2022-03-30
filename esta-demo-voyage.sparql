@@ -9,49 +9,11 @@ PREFIX iisgv: <https://iisg.amsterdam/vocab/>
 PREFIX esta: <https://iisg.amsterdam/resource/esta-demo/>
 PREFIX estav: <https://iisg.amsterdam/resource/esta-demo/vocab/>
 
-SELECT * WHERE {
+SELECT ?voyage ?voyId ?sv ?svId WHERE {
   ?sv schema:partOfTrip ?voyage .
-  
-  
-  # SELECT A PARTICULAR VOYAGE BELOW:
-  FILTER(?voyage=<https://iisg.amsterdam/resource/esta-demo/VOY4>) .
-  
-  
-  { ?sv esta:departure_place ?place . bind("Departure" as ?type) } union { ?sv esta:arrival_place ?place. bind("Arrival" as ?type) }
-  ?place geo:hasGeometry/geo:asWKT ?eventLocation .
-  ?place schema:image ?eventMedia .
-  ?place schema:name ?locationName .  
-  ?sv iisgv:departure_year ?evenStart .
-  ?sv iisgv:arrival_year ?eventEnd .
-  ?place estav:representedBy ?modernPlace .
-  BIND(CONCAT("Image result of commons.wikimedia.org query for: ", ?modernPlace, ".") as ?eventMediaCredit) .
   ?sv iisgv:subvoyage_id ?svId .
-  ?sv iisgv:voyage ?voyId.
-  BIND(CONCAT(?locationName, ": ", "voyage ", LCASE(?voyId), "-", LCASE(?svId)) as ?eventLabel) .
-  # Description
-  #?sv iisgv:actor ?actor .
-  ?sv iisgv:vessel ?vessel .
-  ?sv iisgv:captain ?captain .
-  ?sv iisgv:slaves_landed_at_arrival_location ?slavesLanded .
-  ?sv iisgv:slaves_boarded_at_departure_location ?slavesBoarded .
-  ?sv iisgv:total_slaves_landed_on_voyage ?totSlavesLanded .
-  ?sv iisgv:total_slaves_boarded_on_voyage ?totSlavesBoarded .
-  ?sv iisgv:arrival_date ?arrival_date .
-  ?sv iisgv:departure_date ?departure_date .
-  ?sv iisgv:notes ?notes .
-  ?sv iisgv:source ?source .
-  BIND(CONCAT(
-      "\n",
-      "Vessel: ", ?vessel, "\n",
-      "Captain: ", ?captain, "\n",
-      "Arrival: ", ?arrival_date, "\n",
-      "Slaves landed: ", STR(?slavesLanded), "\n", "\n",
-      "Departure: ", ?departure_date, "\n",
-      "Slaves boarded: ", STR(?slaveBoarded), "\n", "\n",
-	  "Voyage total of slaves boarded: ", ?totSlavesBoarded, "\n",
-      "Voyage total of slaves landed: ", ?totSlavesLanded, "\n", "\n",
-      "Source: ", ?source, "\n" )
-    	as ?eventDescription)
+  ?sv iisgv:voyage ?voyId.  
+
 } 
-ORDER BY ASC(?sv) DESC(?type)
-LIMIT 100
+ORDER BY ASC(?sv)
+LIMIT 30
