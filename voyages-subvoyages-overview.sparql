@@ -1,0 +1,22 @@
+#endpoint: https://api.druid.datalegend.net/datasets/ESTA-DEMO/esta-demo-viz/services/esta-demo-viz/sparql
+#+ tags:
+#+   - voyages
+#+   - subvoyages
+
+PREFIX schema: <http://schema.org/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX iisgv: <https://iisg.amsterdam/vocab/>
+PREFIX esta: <https://iisg.amsterdam/resource/esta-demo/>
+PREFIX estav: <https://iisg.amsterdam/resource/esta-demo/vocab/>
+
+SELECT ?voyage ?voyId ?sv ?svId WHERE {
+  ?sv schema:partOfTrip ?voyage .
+  ?sv iisgv:subvoyage_id ?svId .
+  ?sv iisgv:voyage ?voyId.  
+
+} 
+ORDER BY ASC(?sv)
+LIMIT 30
