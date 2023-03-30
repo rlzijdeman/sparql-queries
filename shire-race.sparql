@@ -1,5 +1,7 @@
 #+ summary: Returns the races in a dataset on the Shire
-#+ tags: Shire, Posthumus
+#+ tags: 
+  - Shire
+  - Posthumus
 #+ endpoint: https://druid.datalegend.net/rlzijdeman/WilckeLOTR/sparql/wilckeLOTR-sparql
 
 PREFIX dbp: <http://dbpedia.org/property/>
